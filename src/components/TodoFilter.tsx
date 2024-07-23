@@ -1,18 +1,17 @@
-import { Button, Flex } from 'antd';
-
+import { Button } from 'antd';
 function TodoFilter({ setFilter }: any) {
 	return (
-		<Flex gap="small" wrap>
+		<div className="flex justify-center items-center gap-4 mt-4">
 			<Button type="primary" onClick={() => setFilter('all')}>
 				All
 			</Button>
-			<Button type="primary" onClick={() => setFilter('Active')}>
+			<Button type="primary" onClick={() => setFilter('active')}>
 				Active
 			</Button>
-			<Button type="primary" onClick={() => setFilter('Completed')}>
+			<Button type="primary" onClick={() => setFilter('completed')}>
 				Completed
 			</Button>
-		</Flex>
+		</div>
 	);
 }
 

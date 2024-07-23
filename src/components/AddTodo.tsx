@@ -17,11 +17,6 @@ function AddTodo({ addTodo }: addTodoProps) {
 	};
 	return (
 		<div className="mb-2 flex">
-			{/* <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Add todo" required />
-			<Button type="primary" onClick={handleSubmit}>
-				Add Todo
-			</Button> */}
-
 			<Space.Compact style={{ width: '100%' }}>
 				<Input defaultValue="Combine input and button" value={text} onChange={(e) => setText(e.target.value)} placeholder="Add todo" required />
 				<Button type="primary" onClick={handleSubmit}>

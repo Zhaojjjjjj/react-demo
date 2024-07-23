@@ -38,11 +38,13 @@ export default function Home() {
 
 	return (
 		<>
-			<div className="w-2/5 h-[1000px] max-h-[800px] mx-auto p-10 bg-slate-200 rounded-lg shadow-lg ">
+			<div className="w-2/5 h-[1000px] max-h-[800px] mx-auto p-10 bg-slate-200 rounded-lg shadow-lg relative">
 				<h1 className="text-3xl text-center mb-10">TodoList</h1>
 				<AddTodo addTodo={addTodo} />
 				<TodoList todos={getFilteredTodos()} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
-				<TodoFilter setFilter={setFilter} filter={filter} />
+				<div className="absolute bottom-0 left-0 w-full p-4">
+					<TodoFilter setFilter={setFilter} filter={filter} />
+				</div>
 			</div>
 		</>
 	);
