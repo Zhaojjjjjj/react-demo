@@ -1,44 +1,49 @@
-import Image from 'next/image';
-import React from 'react';
-
-import type { MenuProps } from 'antd';
-import { Button, Dropdown, Space } from 'antd';
-
-const items: MenuProps['items'] = [
-	{
-		key: '1',
-		label: (
-			<a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-				1st menu item
-			</a>
-		),
-	},
-	{
-		key: '2',
-		label: (
-			<a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-				2nd menu item
-			</a>
-		),
-	},
-	{
-		key: '3',
-		label: (
-			<a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-				3rd menu item
-			</a>
-		),
-	},
-];
+'use client';
+import AddTodo from '@/components/AddTodo';
+import TodoFilter from '@/components/TodoFilter';
+import TodoList from '@/components/TodoList';
+import { Todo } from '@/static/types';
+import { useState } from 'react';
 
 export default function Home() {
+	const [todos, setTodos] = useState<Todo[]>([]);
+	const [filter, setFilter] = useState('all');
+
+	const addTodo = (text: string) => {
+		const newTodo: Todo = {
+			id: Date.now(),
+			text,
+			completed: false,
+		};
+		setTodos([...todos, newTodo]);
+	};
+
+	const deleteTodo = (id: number) => {
+		setTodos(todos.filter((todo) => todo.id !== id));
+	};
+	const toggleTodo = (id: number) => {
+		setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+	};
+
+	const getFilteredTodos = () => {
+		switch (filter) {
+			case 'active':
+				return todos.filter((todo) => !todo.completed);
+			case 'completed':
+				return todos.filter((todo) => todo.completed);
+			default:
+				return todos;
+		}
+	};
+
 	return (
 		<>
-			<Space direction="vertical">
-				<Dropdown menu={{ items }} placement="bottomLeft" arrow={true} trigger={['click']}>
-					<Button>bottomLeft</Button>
-				</Dropdown>
-			</Space>
+			<div className="w-2/5 h-[1000px] max-h-[800px] mx-auto p-10 bg-slate-200 rounded-lg shadow-lg ">
+				<h1 className="text-3xl text-center mb-10">TodoList</h1>
+				<AddTodo addTodo={addTodo} />
+				<TodoList todos={getFilteredTodos()} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
+				<TodoFilter setFilter={setFilter} filter={filter} />
+			</div>
 		</>
 	);
 }
