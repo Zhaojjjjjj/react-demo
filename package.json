@@ -12,6 +12,7 @@
     "@ant-design/nextjs-registry": "^1.0.0",
     "@nuxt/eslint": "^0.3.13",
     "antd": "^5.19.3",
+    "css-doodle": "^0.39.2",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"

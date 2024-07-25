@@ -17,16 +17,27 @@
 }
 
 body {
-	/* color: rgb(var(--background-end-rgb)); */
-	/* background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	height: 100%;
-	background: radial-gradient(black 15%, transparent 16%) 0 0, radial-gradient(black 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
-	background-color: #282828;
-	background-size: 16px 16px;
+	box-sizing: border-box;
+}
+
+.doodle {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+.doodle::after {
+	content: '';
+	position: absolute;
+	top: -100%;
+	left: -100%;
+	right: -100%;
+	bottom: -100%;
+	backdrop-filter: blur(100px);
+	z-index: 1;
 }
 
 @layer utilities {
