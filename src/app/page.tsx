@@ -39,12 +39,12 @@ export default function Home() {
 
 	return (
 		<>
-			<div className="doodle">
+			{/* <div className="doodle">
 				<Doodle />
-			</div>
+			</div> */}
 
 			<div className="py-3 flex justify-center items-center w-full h-screen">
-				<div className="w-2/5 relative p-10 bg-[#fff] opacity-70 rounded-lg shadow-lg z-50 h-[800px] max-h-[800px] border">
+				<div className="w-2/5 relative p-10 bg-[#fff] opacity-100 rounded-lg shadow-lg z-50 h-[800px] max-h-[800px] border">
 					<h1 className="text-3xl text-center mb-10">TodoList</h1>
 					<AddTodo addTodo={addTodo} />
 					<div className=" relative h-[calc(80%)] overflow-y-auto">
